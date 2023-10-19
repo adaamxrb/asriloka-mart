@@ -1,132 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+@extends('layouts.dashboard')
 
-    <title>Dashboard - asrilokamart</title>
+@section('title')
+  Asriloka Mart - Dashboard Produk Detail
+@endsection
 
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <link href="style/main.css" rel="stylesheet" />
-  </head>
-
-  <body>
-    <div class="page-dashboard">
-      <div class="d-flex" id="wrapper" data-aos="fade-right">
-        <!-- Sidebar -->
-        <div class="border-right" id="sidebar-wrapper">
-          <div class="sidebar-heading text-center">
-            <img src="/images/logoseller.png" alt="" class="my-4" />
-          </div>
-          <div class="list-group list-group-flush">
-            <a
-              href="/dashboard.html"
-              class="list-group-item list-group-item-action"
-              >Dashboard</a
-            >
-            <a
-              href="/dashboard-products.html"
-              class="list-group-item list-group-item-action active"
-              >Produk Ku</a
-            >
-            <a
-              href="/dashboard-transactions.html"
-              class="list-group-item list-group-item-action"
-              >Transaksi</a
-            >
-            <a
-              href="/dashboard-settings.html"
-              class="list-group-item list-group-item-action"
-              >Pengaturan Toko</a
-            >
-            <a
-              href="/dashboard-account.html"
-              class="list-group-item list-group-item-action"
-              >Akun Ku</a
-            >
-          </div>
-        </div>
-        <!-- /#sidebar-wrapper -->
-
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-          <nav
-            class="navbar navbar-store navbar-expand-lg navbar-light fixed-top"
-            data-aos="fade-down"
-          >
-            <button
-              class="btn btn-secondary d-md-none mr-auto mr-2"
-              id="menu-toggle"
-            >
-              &laquo; Menu
-            </button>
-
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ml-auto d-none d-lg-flex">
-                <li class="nav-item dropdown">
-                  <a
-                    class="nav-link"
-                    href="#"
-                    id="navbarDropdown"
-                    role="button"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <img
-                      src="/images/icon-user.png"
-                      alt=""
-                      class="rounded-circle mr-2 profile-picture"
-                    />
-                    Hai, Tupai
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/index.html"
-                      >Kembali ke toko</a
-                    >
-                    <a class="dropdown-item" href="/dashboard-account.html"
-                      >Pengaturan</a
-                    >
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/">Keluar</a>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link d-inline-block mt-2" href="#">
-                    <img src="/images/cart.svg" alt="" />
-                  </a>
-                </li>
-              </ul>
-              <!-- Mobile Menu -->
-              <ul class="navbar-nav d-block d-lg-none mt-3">
-                <li class="nav-item">
-                  <a class="nav-link" href="#"> Hai, Tupai </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link d-inline-block" href="#"> Keranjang </a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-
-          <div
+@section('content')
+<div
             class="section-content section-dashboard-home"
             data-aos="fade-up"
           >
@@ -170,15 +49,24 @@
                             </div>
                             <div class="col-md-12">
                               <div class="form-group">
+                                <label for="">Kategori</label>
+                                <select name="category" id="" class="form-control">
+                                  <option value="">
+                                    Pilih Kategori
+                                  </option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="form-group">
                                 <label for="description">Deskripsi</label>
                                 <textarea
-                                  name="descrioption"
-                                  id=""
+                                  name="editor"
+                                  id="editor"
                                   cols="30"
                                   rows="4"
                                   class="form-control"
-                                >
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis quis, non dicta, obcaecati nam sint officia soluta assumenda vero quisquam accusamus earum est pariatur perferendis veritatis. Sequi ipsum, nulla et deleniti totam rerum blanditiis laboriosam, architecto tenetur atque quod aspernatur! </textarea
+                                ></textarea
                                 >
                               </div>
                             </div>
@@ -259,28 +147,25 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis quis, non 
               </div>
             </div>
           </div>
-        </div>
-        <!-- /#page-content-wrapper -->
-      </div>
-    </div>
-    <!-- Bootstrap core JavaScript -->
-    <script src="/vendor/jquery/jquery.slim.min.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-      AOS.init();
-    </script>
-    <!-- Menu Toggle Script -->
-    <script>
-      $("#menu-toggle").click(function (e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-      });
-    </script>
-    <script>
-      function thisFileUpload() {
-        document.getElementById("file").click();
-      }
-    </script>
-  </body>
-</html>
+@endsection
+
+@push('addon-script')
+<script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+<script>
+  ClassicEditor
+          .create( document.querySelector( '#editor' ) )
+          .then( editor => {
+                  console.log( editor );
+          } )
+          .catch( error => {
+                  console.error( error );
+          } );
+</script>
+
+
+<script>
+  function thisFileUpload() {
+    document.getElementById("file").click();
+  }
+</script>
+@endpush

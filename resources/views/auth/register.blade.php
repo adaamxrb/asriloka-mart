@@ -1,7 +1,105 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
-<div class="container">
+
+<div class="page-content page-auth mt-5" id="register">
+    <div class="section-store-auth" data-aos="fade-up">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-4">
+            <h2>
+              Memulai pembelian dan transaksi<br />
+              dengan cara terbaru
+            </h2>
+            <form class="mt-3">
+              <div class="form-group">
+                <label>Nama Lengkap</label>
+                <input
+                  type="text"
+                  class="form-control is-valid"
+                  aria-describedby="nameHelp"
+                  v-model="name"
+                  autofocus
+                />
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input
+                  type="email"
+                  class="form-control is-invalid"
+                  aria-describedby="emailHelp"
+                  v-model="email"
+                />
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label>Toko</label>
+                <p class="text-muted">Apakah anda juga ingin membuka toko?</p>
+                <div
+                  class="custom-control custom-radio custom-control-inline"
+                >
+                  <input
+                    class="custom-control-input"
+                    type="radio"
+                    name="is_store_open"
+                    id="openStoreTrue"
+                    v-model="is_store_open"
+                    :value="true"
+                  />
+                  <label class="custom-control-label" for="openStoreTrue"
+                    >Iya</label
+                  >
+                </div>
+                <div
+                  class="custom-control custom-radio custom-control-inline"
+                >
+                  <input
+                    class="custom-control-input"
+                    type="radio"
+                    name="is_store_open"
+                    id="openStoreFalse"
+                    v-model="is_store_open"
+                    :value="false"
+                  />
+                  <label
+                    makasih
+                    class="custom-control-label"
+                    for="openStoreFalse"
+                    >Lain Kali</label
+                  >
+                </div>
+              </div>
+              <div class="form-group" v-if="is_store_open">
+                <label>Nama Toko</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  aria-describedby="storeHelp"
+                />
+              </div>
+              <div class="form-group" v-if="is_store_open">
+                <label>Kategori</label>
+                <select name="category" class="form-control">
+                  <option value="" disabled>Pilih Kategori</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-success btn-block mt-4">
+                Daftar
+              </button>
+              <button type="submit" class="btn btn-signup btn-block mt-2">
+                Masuk
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="container" style="display: none">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -75,3 +173,33 @@
     </div>
 </div>
 @endsection
+
+@push('addon-script')
+<script src="/vendor/vue/vue.js"></script>
+<script src="https://unpkg.com/vue-toasted"></script>
+<script>
+  Vue.use(Toasted);
+
+  var register = new Vue({
+    el: "#register",
+    mounted() {
+      AOS.init();
+      this.$toasted.error(
+        "Maaf, tampaknya email sudah terdaftar pada sistem kami.",
+        {
+          position: "top-center",
+          className: "rounded",
+          duration: 1000,
+        }
+      );
+    },
+    data: {
+      name: "Angga Hazza Sett",
+      email: "kamujagoan@bwa.id",
+      password: "",
+      is_store_open: true,
+      store_name: "",
+    },
+  });
+</script>
+@endpush

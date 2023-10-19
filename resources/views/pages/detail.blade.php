@@ -1,102 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+@extends('layouts.app')
 
-    <title>asrilokamart</title>
+@section('title')
+  Asriloka Mart - Detail
+@endsection
 
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <link href="style/main.css" rel="stylesheet" />
-  </head>
-
-  <body>
-    <!-- Navigation -->
-    <nav
-      class="navbar navbar-expand-lg navbar-light navbar-store fixed-top navbar-fixed-top"
-      data-aos="fade-down"
-      aria-label="Navbar"
-    >
-      <div class="container">
-        <a class="navbar-brand" href="/">
-          <img src="/images/logo.svg" alt="" />
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/">Beranda </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/categories.html">Kategori</a>
-            </li>
-          </ul>
-
-          <!-- Desktop Menu -->
-          <ul class="navbar-nav d-none d-lg-flex">
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <img
-                  src="/images/icon-user.png"
-                  alt=""
-                  class="rounded-circle mr-2 profile-picture"
-                />
-                Hi, Tupai
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/dashboard.html">Dashboard</a>
-                <a class="dropdown-item" href="/dashboard-account.html"
-                  >Pengaturan</a
-                >
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/">Keluar</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link d-inline-block mt-2" href="#">
-                <img src="/images/cart.svg" alt="" />
-              </a>
-            </li>
-          </ul>
-
-          <!-- Mobile Menu -->
-          <ul class="navbar-nav d-block d-lg-none">
-            <li class="nav-item">
-              <a class="nav-link" href="#"> Hi, Tupai </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link d-inline-block" href="#"> Keranjang </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Page Content -->
-    <div class="page-content page-details">
+@section('content')
+<div class="page-content page-details">
       <section
         class="store-breadcrumbs"
         data-aos="fade-down"
@@ -249,61 +158,42 @@
         </section>
       </div>
     </div>
+@endsection
 
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-12 text-center">
-            <p class="pt-4 pb-2">
-              2023 Copyright asrilokamart. All Rights Reserved.
-            </p>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="/vendor/jquery/jquery.slim.min.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
+@push('addon-script')
+<script src="/vendor/vue/vue.js"></script>
+<script>
+  var gallery = new Vue({
+    el: "#gallery",
+    mounted() {
       AOS.init();
-    </script>
-    <script src="/vendor/vue/vue.js"></script>
-    <script>
-      var gallery = new Vue({
-        el: "#gallery",
-        mounted() {
-          AOS.init();
+    },
+    data: {
+      activePhoto: 3,
+      photos: [
+        {
+          id: 1,
+          url: "/images/produk-details1.jpg",
         },
-        data: {
-          activePhoto: 3,
-          photos: [
-            {
-              id: 1,
-              url: "/images/produk-details1.jpg",
-            },
-            {
-              id: 2,
-              url: "/images/produk-details2.jpg",
-            },
-            {
-              id: 3,
-              url: "/images/produk-details3.jpg",
-            },
-            {
-              id: 4,
-              url: "/images/produk-details4.jpg",
-            },
-          ],
+        {
+          id: 2,
+          url: "/images/produk-details2.jpg",
         },
-        methods: {
-          changeActive(id) {
-            this.activePhoto = id;
-          },
+        {
+          id: 3,
+          url: "/images/produk-details3.jpg",
         },
-      });
-    </script>
-    <script src="/script/navbar-scroll.js"></script>
-  </body>
-</html>
+        {
+          id: 4,
+          url: "/images/produk-details4.jpg",
+        },
+      ],
+    },
+    methods: {
+      changeActive(id) {
+        this.activePhoto = id;
+      },
+    },
+  });
+</script>
+@endpush
