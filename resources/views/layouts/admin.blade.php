@@ -23,7 +23,7 @@
         <!-- Sidebar -->
         <div class="border-right" id="sidebar-wrapper">
           <div class="sidebar-heading text-center">
-            <img src="/images/logo.svg" alt="" class="my-4" />
+            <img src="/images/logoadmin.png" alt="" class="my-4" />
           </div>
           <div class="list-group list-group-flush">
             <a
@@ -32,24 +32,24 @@
               >Dashboard</a
             >
             <a
-              href="/dashboard-products.html"
+              href="#"
               class="list-group-item list-group-item-action"
               >Produk</a
             >
             <a
-              href="/dashboard-transactions.html"
+              href="#"
+              class="list-group-item list-group-item-action"
+              >Kategori</a
+            >
+            <a
+              href="#"
               class="list-group-item list-group-item-action"
               >Transaksi</a
             >
             <a
-              href="/dashboard-settings.html"
+              href="#"
               class="list-group-item list-group-item-action"
-              >Pengaturan Toko</a
-            >
-            <a
-              href="/dashboard-account.html"
-              class="list-group-item list-group-item-action"
-              >Akun Saya</a
+              >Pengguna</a
             >
             <a
             href="/index.html"
@@ -112,20 +112,8 @@
                     Hai, Tupai
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/index.html"
-                      >Kembali ke toko</a
-                    >
-                    <a class="dropdown-item" href="/dashboard-account.html"
-                      >Pengaturan</a
-                    >
-                    <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/">Keluar</a>
                   </div>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link d-inline-block mt-2" href="#">
-                    <img src="/images/cart.svg" alt="" />
-                  </a>
                 </li>
               </ul>
               <!-- Mobile Menu -->

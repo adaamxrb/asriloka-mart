@@ -48,9 +48,9 @@
                                 </div>
                               </div>
                               <div class="col-12 col-md-6">
-                                <div class="product-title">Status</div>
+                                <div class="product-title">Status Pembayaran</div>
                                 <div class="product-subtitle text-danger">
-                                  Tertunda
+                                  BELUM DIKIRIM
                                 </div>
                               </div>
                               <div class="col-12 col-md-6">
@@ -101,17 +101,14 @@
                               <div class="col-12">
                                 <div class="row">
                                   <div class="col-md-3">
-                                    <div class="product-title">Status</div>
+                                    <div class="product-title">Status Pengiriman</div>
                                     <select
                                       name="status"
                                       id="status"
                                       class="form-control"
                                       v-model="status"
                                     >
-                                      <option value="BELUM DIBAYAR">
-                                        Belum Dibayar
-                                      </option>
-                                      <option value="TERTUNDA">Tertunda</option>
+                                      <option value="TERTUNDA">Belum Dikirim</option>
                                       <option value="DIKIRIM">Dikirim</option>
                                       <option value="SUKSES">Sukses</option>
                                     </select>
@@ -139,6 +136,13 @@
                                     </div>
                                   </template>
                                 </div>
+                              </div>
+                            </div>
+                            <div class="row mt-4">
+                              <div class="col-12 text-right">
+                                <button type="submit" class="btn btn-success btn-lg mt-4">
+                                  Simpan
+                                </button>
                               </div>
                             </div>
                           </div>
