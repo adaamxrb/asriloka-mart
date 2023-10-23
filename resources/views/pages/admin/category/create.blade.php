@@ -18,7 +18,7 @@
               </div>
               <div class="dashboard-content">
                 <div class="row">
-                  <div class="col-12">
+                  <div class="col-md-12">
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -52,7 +52,7 @@
                                 type="submit"
                                 class="btn btn-success px-5"
                               >
-                                Save
+                                Simpan 
                               </button>
                             </div>
                         </div>
