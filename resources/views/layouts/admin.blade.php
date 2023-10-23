@@ -38,6 +38,11 @@
               >Produk</a
             >
             <a
+              href="{{ route('product-gallery.index') }}"
+              class="list-group-item list-group-item-action {{ (request()->is('admin/prpoduct-gallery*')) ? 'active' : '' }}"
+              >Galeri</a
+            >
+            <a
               href="{{ route('category.index') }}"
               class="list-group-item list-group-item-action {{ (request()->is('admin/category*')) ? 'active' : '' }}"
               >Kategori</a
