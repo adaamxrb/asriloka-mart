@@ -26,7 +26,7 @@
           </div>
         </div>
       </section>
-      <section class="store-gallery" id="gallery">
+      <section class="store-gallery mb-3" id="gallery">
         <div class="container">
           <div class="row">
             <div class="col-lg-8" data-aos="zoom-in">
@@ -62,21 +62,33 @@
           </div>
         </div>
       </section>
+
       <div class="store-details-container" data-aos="fade-up">
         <section class="store-heading">
           <div class="container">
             <div class="row">
               <div class="col-lg-8">
-                <h1>Durian Asriloka (? kg)</h1>
-                <div class="owner">By Galih Pratama</div>
-                <div class="price">Rp. 80.000</div>
+                <h1>{{ $product->name }}</h1>
+                <div class="owner">{{ $product->user->store_name }}</div>
+                <div class="price">{{ number_format($product->price) }}</div>
               </div>
               <div class="col-lg-2" data-aos="zoom-in">
-                <a
-                  class="btn btn-success nav-link px-4 text-white btn-block mb-3"
-                  href="/cart.html"
-                  >Masukkan Keranjang</a
-                >
+                @auth
+                  <form action="{{ route('detail-add', $product->id) }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <button
+                    type="submit"
+                    class="btn btn-success nav-link px-4 text-white btn-block mb-3"
+                    >Masukkan Keranjang
+                  </button>
+                  </form>
+                @else
+                  <a
+                    href="{{ route('login') }}"
+                    class="btn btn-success nav-link px-4 text-white btn-block mb-3"
+                    >Masuk Untuk Menambahkan
+                  </a>
+                @endauth
               </div>
             </div>
           </div>
@@ -85,19 +97,7 @@
           <div class="container">
             <div class="row">
               <div class="col-12 col-lg-8">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Excepturi, in nemo non itaque at blanditiis et assumenda.
-                  Soluta, provident perferendis! Lorem ipsum dolor sit amet
-                  consectetur adipisicing elit. Tempora, enim?
-                </p>
-                <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Architecto, a numquam. Vero ea iure molestias assumenda
-                  officia. Iusto odio quos perspiciatis a voluptatem accusamus
-                  et enim magnam, vero culpa non voluptates obcaecati nam
-                  dignissimos iste ullam expedita blanditiis nesciunt quo!
-                </p>
+                {!! $product->description !!}
               </div>
             </div>
           </div>
@@ -169,24 +169,14 @@
       AOS.init();
     },
     data: {
-      activePhoto: 3,
+      activePhoto: 0,
       photos: [
-        {
-          id: 1,
-          url: "/images/produk-details1.jpg",
-        },
-        {
-          id: 2,
-          url: "/images/produk-details2.jpg",
-        },
-        {
-          id: 3,
-          url: "/images/produk-details3.jpg",
-        },
-        {
-          id: 4,
-          url: "/images/produk-details4.jpg",
-        },
+        @foreach($product->galleries as $gallery)
+            {
+              id: {{ $gallery->id }},
+              url: "{{ Storage::url($gallery->photos) }}",
+            }
+          @endforeach
       ],
     },
     methods: {
