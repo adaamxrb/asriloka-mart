@@ -33,9 +33,14 @@
               >Dashboard</a
             >
             <a
-              href="#"
-              class="list-group-item list-group-item-action"
+              href="{{ route('product.index') }}"
+              class="list-group-item list-group-item-action {{ (request()->is('admin/product*')) ? 'active' : '' }}"              
               >Produk</a
+            >
+            <a
+              href="{{ route('product-gallery.index') }}"
+              class="list-group-item list-group-item-action {{ (request()->is('admin/prpoduct-gallery*')) ? 'active' : '' }}"
+              >Galeri</a
             >
             <a
               href="{{ route('category.index') }}"
