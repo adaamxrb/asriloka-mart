@@ -14,35 +14,23 @@
          </div>
        </div>
        <div class="row">
-        <div class="row">
-          @php $incrementCategory = 0 @endphp
-          @forelse ($categories as $category)
-              <div
-                  class="col-6 col-md-3 col-lg-2"
-                  data-aos="fade-up"
-                  data-aos-delay="{{ $incrementCategory+= 100 }}"
-              >
-                  <a href="{{ route('categories-detail', $category->slug) }}" class="component-categories d-block">
-                      <div class="categories-image">
-                          <img
-                          src="{{ Storage::url($category->photo) }}"
-                          alt=""
-                          class="w-100"
-                          />
-                      </div>
-                      <p class="categories-text">
-                          {{ $category->name }}
-                      </p>
-                  </a>
-              </div>
-          @empty
-              <div class="col-12 text-center py-5" 
-                    data-aos="fade-up"
-                    data-aos-delay="100">
-                    Kategori Kosong
-              </div>
-          @endforelse
-        </div>
+         @php $incrementCategory = 0 @endphp
+         @forelse ($categories as $category)
+         <div class="col-6 col-md-3 col-lg-2" data-aos="fade-up" data-aos-delay="{{ $incrementCategory+= 100 }}">
+           <a class="component-categories d-block" href="{{ route('categories-detail', $category->slug) }}">
+             <div class="categories-image">
+               <img src="{{ Storage::url($category->photo) }}" alt="Gadgets Categories" class="w-100" />
+             </div>
+             <p class="categories-text">
+               {{ $category->name }}
+             </p>
+           </a>
+         </div>
+         @empty
+             <div class="col-12 text-center py-5" data-aos="fade-up" data-aos-delay="100">
+               Kategori Tidak Ditemukan
+             </div>
+         @endforelse
        </div>
      </div>
    </section>
