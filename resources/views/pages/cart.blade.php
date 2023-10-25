@@ -49,19 +49,19 @@
                                             <div class="product-subtitle">{{ $cart->product->user->store_name }}</div>
                                         </td>
                                         <td style="width: 35%">
-                                            <div class="product-title">{{ number_format($cart->product->price) }}</div>
+                                            <div class="product-title">Rp. {{ number_format($cart->product->price) }}</div>
                                             <div class="product-subtitle"></div>
                                         </td>
                                         <td style="width: 20%">
-                                            
-                                              <form action="{{ route('cart-delete', $cart->products_id) }}" method="POST">
-                                                @method('DELETE')
+
+                                            <form action="{{ route('cart-delete', $cart->id) }}" method="POST">
                                                 @csrf
+                                                @method('DELETE')
                                                 <button type="submit" class="btn btn-remove-cart">
                                                     Hapus
                                                 </button>
-                                              </form>
-                                            
+                                            </form>
+
                                         </td>
                                     </tr>
                                 @endforeach
@@ -94,18 +94,22 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="province">Provinsi</label>
-                            <select name="province" id="province" class="form-control">
-                                <option value="Jawa Timur">Jawa Timur</option>
+                            <label for="provinces_id">Province</label>
+                            <select name="provinces_id" id="provinces_id" class="form-control" v-model="provinces_id"
+                                v-if="provinces">
+                                <option v-for="province in provinces" :value="province.id">@{{ province.name }}</option>
                             </select>
+                            <select v-else class="form-control"></select>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="city">Kota</label>
-                            <select name="city" id="city" class="form-control">
-                                <option value="Surabaya">Surabaya</option>
+                            <label for="regencies_id">City</label>
+                            <select name="regencies_id" id="regencies_id" class="form-control" v-model="regencies_id"
+                                v-if="regencies">
+                                <option v-for="regency in regencies" :value="regency.id">@{{ regency.name }}</option>
                             </select>
+                            <select v-else class="form-control"></select>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -116,7 +120,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="country">Negara</label>
+                            <label for="country">Country</label>
                             <input type="text" class="form-control" id="country" name="country" value="Indonesia" />
                         </div>
                     </div>
@@ -163,3 +167,45 @@
         </section>
     </div>
 @endsection
+
+@push('addon-script')
+    <script src="/vendor/vue/vue.js"></script>
+    <script src="https://unpkg.com/vue-toasted"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        var locations = new Vue({
+            el: "#locations",
+            mounted() {
+                this.getProvincesData();
+            },
+            data: {
+                provinces: null,
+                regencies: null,
+                provinces_id: null,
+                regencies_id: null,
+            },
+            methods: {
+                getProvincesData() {
+                    var self = this;
+                    axios.get('{{ route('api-provinces') }}')
+                        .then(function(response) {
+                            self.provinces = response.data;
+                        })
+                },
+                getRegenciesData() {
+                    var self = this;
+                    axios.get('{{ url('api/regencies') }}/' + self.provinces_id)
+                        .then(function(response) {
+                            self.regencies = response.data;
+                        })
+                },
+            },
+            watch: {
+                provinces_id: function(val, oldVal) {
+                    this.regencies_id = null;
+                    this.getRegenciesData();
+                },
+            }
+        });
+    </script>
+@endpush
