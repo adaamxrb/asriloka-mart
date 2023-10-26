@@ -38,7 +38,7 @@
                 <thead>
                   <tr>
                     <td>Gambar</td>
-                    <td>Nama &amp; Penjual</td>
+                    <td>Produk</td>
                     <td>Harga</td>
                     <td>Menu</td>
                   </tr>
@@ -88,7 +88,7 @@
               <h2 class="mb-4">Detail Pengiriman</h2>
             </div>
           </div>
-          <form action="" method="POST" enctype="multipart/form-data">
+          <form action="{{ route('checkout') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="total_price" value="{{ $totalPrice }}">
             <div class="row mb-2" data-aos="fade-up" data-aos-delay="200" id="locations">
@@ -190,7 +190,7 @@
               </div>
               <div class="col-4 col-md-2">
                 <div class="product-title">Rp. 0</div>
-                <div class="product-subtitle">Pengiriman</div>
+                <div class="product-subtitle">Ship to Jakarta</div>
               </div>
               <div class="col-4 col-md-2">
                 <div class="product-title text-success">Rp. {{ number_format($totalPrice ?? 0) }}</div>
@@ -203,7 +203,7 @@
                 >
                   Bayar Sekarang
                 </button>
-              </div>
+              </div>  
             </div>
           </form>
         </div>
