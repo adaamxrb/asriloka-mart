@@ -9,15 +9,13 @@ class Cart extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'products_id', 'users_id'
-    ];
+    protected $fillable = ['products_id', 'users_id'];
 
     protected $hidden = [];
 
     public function product()
     {
-        return $this->hasOne(Product::class, 'id', 'productd_id');
+        return $this->hasOne(Product::class, 'id', 'products_id');
     }
 
     public function user()

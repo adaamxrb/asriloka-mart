@@ -4,12 +4,22 @@
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
         'reference' => '3db25e6d00f917c4f0d848364b5fc09882586b0e',
+
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
+        'azishapidin/indoregion' => array(
+            'pretty_version' => '3.0.3',
+            'version' => '3.0.3.0',
+            'reference' => '95874c8b89ae8216fad11ec0f8e81de544331ded',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../azishapidin/indoregion',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'brick/math' => array(
             'pretty_version' => '0.11.0',
             'version' => '0.11.0.0',
@@ -436,6 +446,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
+
             'reference' => '3db25e6d00f917c4f0d848364b5fc09882586b0e',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
@@ -652,6 +663,15 @@
             'reference' => '3cb4d163b58589e47b35103e8e5e6a6a475b47be',
             'type' => 'library',
             'install_path' => __DIR__ . '/../nyholm/psr7',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'parsecsv/php-parsecsv' => array(
+            'pretty_version' => '1.3.2',
+            'version' => '1.3.2.0',
+            'reference' => '2d6236cae09133e0533d34ed45ba1e1ecafffebb',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../parsecsv/php-parsecsv',
             'aliases' => array(),
             'dev_requirement' => false,
         ),

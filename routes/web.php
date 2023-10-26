@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin;
+use illuminate\Support\Facades\Auth;
 // use App\Http\Controllers\Admin\CategoryController;
 
 /*
@@ -21,10 +22,9 @@ Route::get('/categories/{id}', [App\Http\Controllers\CategoryController::class, 
 Route::get('/details/{id}', [App\Http\Controllers\DetailController::class, 'index'])->name('detail');
 Route::post('/details/{id}', [App\Http\Controllers\DetailController::class, 'add'])->name('detail-add');
 Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('cart');
-
 Route::post('/checkout', [App\Http\Controllers\CheckoutController::class, 'process'])->name('checkout');
 Route::post('/checkout/callback', [App\Http\Controllers\CheckoutController::class, 'callback'])->name('midtrans-callback');
-
+Route::delete('/cart/{id}', [App\Http\Controllers\CartController::class, 'delete'])->name('cart-delete');
 Route::get('/success', [App\Http\Controllers\CartController::class, 'success'])->name('success');
 
 Route::get('/register/success', [App\Http\Controllers\Auth\RegisterController::class, 'success'])->name('register-success');
