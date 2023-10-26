@@ -66,7 +66,7 @@
                         {{ $product->name }}
                     </div>
                     <div class="products-price">
-                        ${{ $product->price }}
+                        Rp. {{ $product->price }}
                     </div>
                 </a>
             </div>

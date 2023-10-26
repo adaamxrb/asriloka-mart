@@ -27,44 +27,44 @@
           </div>
           <div class="list-group list-group-flush">
             <a
-              href="/dashboard.html"
-              class="list-group-item list-group-item-action"
+              href="{{ route('dashboard') }}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard')) ?'active' : '' }}"
               >Dashboard</a
             >
             <a
-              href="/dashboard-products.html"
-              class="list-group-item list-group-item-action"
+              href="{{ route('dashboard-products') }}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/products*')) ?'active' : '' }}"
               >Produk</a
             >
             <a
-              href="/dashboard-transactions.html"
-              class="list-group-item list-group-item-action"
+              href="{{ route('dashboard-transactions') }}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/transactions*')) ?'active' : '' }}"
               >Transaksi</a
             >
             <a
-              href="/dashboard-settings.html"
-              class="list-group-item list-group-item-action"
+              href="{{ route('dashboard-Settings-store') }}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/settings*')) ?'active' : '' }}"
               >Pengaturan Toko</a
             >
             <a
-              href="/dashboard-account.html"
-              class="list-group-item list-group-item-action"
+              href="{{ route('dashboard-Settings-account') }}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/account*')) ?'active' : '' }}"
               >Akun Saya</a
             >
             <a
-            href="/index.html"
-            {{-- href="{{ route('logout') }}"
-            onclick="event.preventDefault();
-                     document.getElementById('logout-form').submit();" --}}
+            href="{{ route('logout') }}"
+            onclick="event.preventDefault();document.getElementById('logout-form').submit();"
             class="list-group-item list-group-item-action"
          >
            Keluar
          </a>
-         {{-- <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-             @csrf
-         </form> --}}
           </div>
         </div>
+        
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+          @csrf
+      </form>
+
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
@@ -109,32 +109,49 @@
                       alt=""
                       class="rounded-circle mr-2 profile-picture"
                     />
-                    Hai, Tupai
+                    Hai, {{ Auth::user()->name }}
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/index.html"
-                      >Kembali ke toko</a
-                    >
-                    <a class="dropdown-item" href="/dashboard-account.html"
+                    <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>
+                    <a class="dropdown-item" href="{{ route('dashboard-Settings-account') }}"
                       >Pengaturan</a
                     >
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/">Keluar</a>
+                    <a 
+                    class="dropdown-item" 
+                    href="{{ route('logout') }}"
+                    onclick="event.preventDefault();document.getElementById('logout-form').submit();"
+                    >Keluar</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                   </div>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link d-inline-block mt-2" href="#">
-                    <img src="/images/cart.svg" alt="" />
-                  </a>
+                <li class="nav-item"> 
+                  <a href="{{ route('cart') }}" class="nav-link d-inline-block mt-2">
+                    @php
+                        $carts = \App\Models\Cart::where('users_id', Auth::user()->id)->count();
+                    @endphp
+                    @if($carts > 0)
+                        <img src="/images/icon-cart-filled.svg" alt="" />
+                        <div class="cart-badge">{{ $carts }}</div>
+                    @else
+                        <img src="/images/icon-cart-empty.svg" alt="" />
+                    @endif
+                </a>
                 </li>
               </ul>
               <!-- Mobile Menu -->
               <ul class="navbar-nav d-block d-lg-none mt-3">
                 <li class="nav-item">
-                  <a class="nav-link" href="#"> Hai, Tupai </a>
+                  <a class="nav-link" href="#"> Hai, {{ Auth::user()->name }}</a>
+                  
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link d-inline-block" href="#"> Keranjang </a>
+                <li class="nav-item"> 
+                  <a href="{{ route('cart') }}" class="nav-link d-inline-block">
+                    Keranjang
+                    
+                </a>
                 </li>
               </ul>
             </div>
