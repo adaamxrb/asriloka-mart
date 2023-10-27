@@ -34,7 +34,7 @@
             <a
               href="{{ route('dashboard-products') }}"
               class="list-group-item list-group-item-action {{ (request()->is('dashboard/products*')) ?'active' : '' }}"
-              >Produk</a
+              >Produk Saya</a
             >
             <a
               href="{{ route('dashboard-transactions') }}"

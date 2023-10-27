@@ -55,7 +55,7 @@
                   alt=""
                   class="rounded-circle mr-2 profile-picture"
                 />
-                Hi, {{ Auth::user()->name }}
+                Hai, {{ Auth::user()->name }}
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>
@@ -91,7 +91,7 @@
           <!-- Mobile Menu -->
           <ul class="navbar-nav d-block d-lg-none">
             <li class="nav-item">
-              <a class="nav-link" href="#"> Hi, {{ Auth::user()->name }} </a>
+              <a class="nav-link" href="#"> Hai, {{ Auth::user()->name }} </a>
             </li>
             <li class="nav-item">
               <a class="nav-link d-inline-block" href="#"> Keranjang </a>

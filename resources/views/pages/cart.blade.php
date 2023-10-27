@@ -18,7 +18,7 @@
               <nav>
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item">
-                    <a href="/index.html">Beranda</a>
+                    <a href="{{ route('home') }}">Beranda</a>
                   </li>
                   <li class="breadcrumb-item active">
                     Keranjang
@@ -38,7 +38,7 @@
                 <thead>
                   <tr>
                     <td>Gambar</td>
-                    <td>Produk</td>
+                    <td>Produk &amp; Penjual</td>
                     <td>Harga</td>
                     <td>Menu</td>
                   </tr>
@@ -100,7 +100,7 @@
                     class="form-control"
                     id="address_one"
                     name="address_one"
-                    value="Setra Duta Cemara"
+                    value=""
                   />
                 </div>
               </div>
@@ -112,7 +112,7 @@
                     class="form-control"
                     id="address_two"
                     name="address_two"
-                    value="Blok B2 No. 34"
+                    value=""
                   />
                 </div>
               </div>
@@ -142,7 +142,7 @@
                     class="form-control"
                     id="zip_code"
                     name="zip_code"
-                    value="40512"
+                    value=""
                   />
                 </div>
               </div>
@@ -166,7 +166,7 @@
                     class="form-control"
                     id="phone_number"
                     name="phone_number"
-                    value="+628 2020 11111"
+                    value=""
                   />
                 </div>
               </div>
@@ -186,7 +186,7 @@
               </div>
               <div class="col-4 col-md-3">
                 <div class="product-title">Rp. 0</div>
-                <div class="product-subtitle">Product Insurance</div>
+                <div class="product-subtitle">Asuransi Produk</div>
               </div>
               <div class="col-4 col-md-2">
                 <div class="product-title">Rp. 0</div>

@@ -45,7 +45,7 @@
                   alt=""
                   class="rounded-circle mr-2 profile-picture"
                 />
-                Hi, Tupai
+                Hai, {{ $user->name }}
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="/dashboard.html">Dashboard</a>
@@ -66,7 +66,7 @@
           <!-- Mobile Menu -->
           <ul class="navbar-nav d-block d-lg-none">
             <li class="nav-item">
-              <a class="nav-link" href="#"> Hi, Tupai </a>
+              <a class="nav-link" href="#"> Hai, Tupai </a>
             </li>
             <li class="nav-item">
               <a class="nav-link d-inline-block" href="#"> Keranjang </a>
