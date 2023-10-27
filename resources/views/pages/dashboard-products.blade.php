@@ -11,7 +11,7 @@
           >
             <div class="container-fluid">
               <div class="dashboard-heading">
-                <h2 class="dashboard-title">Produk ku</h2>
+                <h2 class="dashboard-title">Produk Saya</h2>
                 <p class="dashboard-subtitle">
                   Kelola dengan baik dan dapatkan penghasilan
                 </p>
@@ -20,77 +20,30 @@
                 <div class="row">
                   <div class="col-12">
                     <a
-                      href="/dashboard-products-create.html"
+                      href="{{ route('dashboard-products-create') }}"
                       class="btn btn-success"
                       >Tambah produk baru</a
                     >
                   </div>
                 </div>
                 <div class="row mt-4">
+                  @foreach ($products as $product)
                   <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <a
                       class="card card-dashboard-product d-block"
-                      href="/dashboard-products-details.html"
+                      href="{{ route('dashboard-products-details', $product->id) }}"
                     >
                       <div class="card-body">
-                        <img src="/images/myp1.png" alt="" class="w-100 mb-2" />
+                        <img src="{{ Storage::url($product->galleries->first()->photos ?? '') }}" alt="" class="w-100 mb-2" />
                         <div class="product-title">
-                          Rubath | Kopi Bubuk Arabika
+                          {{ $product->name }}
                         </div>
-                        <div class="product-category">Minuman</div>
+                        <div class="product-category">
+                          {{ $product->category->name }}</div>
                       </div>
                     </a>
                   </div>
-                  <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <a
-                      class="card card-dashboard-product d-block"
-                      href="/dashboard-products-details.html"
-                    >
-                      <div class="card-body">
-                        <img src="/images/myp2.png" alt="" class="w-100 mb-2" />
-                        <div class="product-title">
-                          Anugrah | Kopi Bubuk Robusta
-                        </div>
-                        <div class="product-category">Minuman</div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <a
-                      class="card card-dashboard-product d-block"
-                      href="/dashboard-products-details.html"
-                    >
-                      <div class="card-body">
-                        <img src="/images/myp3.png" alt="" class="w-100 mb-2" />
-                        <div class="product-title">Tea Red Ginger</div>
-                        <div class="product-category">Minuman</div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <a
-                      class="card card-dashboard-product d-block"
-                      href="/dashboard-products-details.html"
-                    >
-                      <div class="card-body">
-                        <img src="/images/myp4.png" alt="" class="w-100 mb-2" />
-                        <div class="product-title">Samsi Madu 150ml</div>
-                        <div class="product-category">Madu</div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <a
-                      class="card card-dashboard-product d-block"
-                      href="/dashboard-products-details.html"
-                    >
-                      <div class="card-body">
-                        <img src="/images/myp5.png" alt="" class="w-100 mb-2" />
-                        <div class="product-title">Qriuk | Keripik Pisang</div>
-                        <div class="product-category">Camilan</div>
-                      </div>
-                    </a>
-                  </div>
+                  @endforeach
                 </div>
               </div>
             </div>
