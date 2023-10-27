@@ -11,13 +11,24 @@
           >
             <div class="container-fluid">
               <div class="dashboard-heading">
-                <h2 class="dashboard-title">Tambah produk baru</h2>
-                <p class="dashboard-subtitle">Buat produk anda sendiri</p>
+                <h2 class="dashboard-title">Tambah Produk Baru</h2>
+                <p class="dashboard-subtitle">Buat Produk Anda Sendiri</p>
               </div>
               <div class="dashboard-content">
                 <div class="row">
                   <div class="col-12">
-                    <form action="">
+                    @if ($errors->any())
+                      <div class="alert alert-danger">
+                          <ul>
+                              @foreach ($errors->all() as $error)
+                                  <li>{{ $error }}</li>
+                              @endforeach
+                          </ul>
+                      </div>
+                  @endif  
+                    <form action="{{ route('dashboard-products-store') }}" method="POST" enctype="multipart/form-data">
+                      @csrf
+                      <input type="hidden" name="users_id" value="{{ Auth::user()->id }}">
                       <div class="card">
                         <div class="card-body">
                           <div class="row">
@@ -29,7 +40,7 @@
                                   class="form-control"
                                   id="name"
                                   aria-describedby="name"
-                                  name="storeName"
+                                  name="name"
                                   value=""
                                 />
                               </div>
@@ -49,6 +60,16 @@
                             </div>
                             <div class="col-md-12">
                               <div class="form-group">
+                                <label for="">Kategori</label>
+                                <select name="categories_id" class="form-control">
+                                  @foreach ($categories as $categories)
+                                    <option value="{{ $categories->id }}">{{ $categories->name }}</option>
+                                  @endforeach
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="form-group">
                                 <label for="description">Deskripsi</label>
                                 <textarea
                                   name="description"
@@ -62,31 +83,24 @@
                             </div>
                             <div class="col-md-12">
                               <div class="form-group">
-                                <label for="thumbnails">Foto Produk</label>
-                                <input
-                                  type="file"
-                                  multiple
-                                  class="form-control pt-1"
-                                  id="thumbnails"
-                                  aria-describedby="thumbnails"
-                                  name="thumbnails"
-                                />
-                                <small class="text-muted">
+                                <label>Thumbnails</label>
+                                <input type="file" name="photo" class="form-control" />
+                                <p class="text-muted">
                                   Kamu dapat memilih lebih dari satu file
-                                </small>
+                                </p>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                      <div class="row mt-2">
-                        <div class="col">
-                          <button
-                            type="submit"
-                            class="btn btn-success btn-block px-5"
-                          >
-                            Simpan
-                          </button>
+                          <div class="row mt-2">
+                            <div class="col text-right">
+                              <button
+                                type="submit"
+                                class="btn btn-success px-5"
+                              >
+                                Simpan
+                              </button>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </form>

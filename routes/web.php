@@ -37,7 +37,13 @@ Route::group(['middleware' => ['auth']], function () {
   Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
   Route::get('/dashboard/products', [App\Http\Controllers\DashboardProductsController::class, 'index'])->name('dashboard-products');
   Route::get('/dashboard/products/create', [App\Http\Controllers\DashboardProductsController::class, 'create'])->name('dashboard-products-create');
+  Route::post('/dashboard/products', [App\Http\Controllers\DashboardProductsController::class, 'store'])->name('dashboard-products-store');
   Route::get('/dashboard/products/{id}', [App\Http\Controllers\DashboardProductsController::class, 'details'])->name('dashboard-products-details');
+  Route::post('/dashboard/products/{id}', [App\Http\Controllers\DashboardProductsController::class, 'update'])->name('dashboard-products-update');
+
+  Route::post('/dashboard/products/gallery/upload', [App\Http\Controllers\DashboardProductsController::class, 'uploadGallery'])->name('dashboard-products-gallery-upload');
+  Route::get('/dashboard/products/gallery/delete/{id}', [App\Http\Controllers\DashboardProductsController::class, 'deleteGallery'])->name('dashboard-products-gallery-delete');
+
 
   Route::get('/dashboard/transactions', [App\Http\Controllers\DashboardTransactionController::class, 'index'])->name('dashboard-transactions');
   Route::get('/dashboard/transactions/{id}', [App\Http\Controllers\DashboardTransactionController::class, 'details'])->name('dashboard-transaction-details');
